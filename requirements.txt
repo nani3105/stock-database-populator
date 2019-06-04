@@ -1,0 +1,4 @@
+pandas_datareader==0.7.0
+pymongo[tls,srv]==3.7.0
+dnspython
+yahoo_earnings_calendar
