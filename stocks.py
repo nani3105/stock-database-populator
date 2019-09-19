@@ -6,13 +6,19 @@ from pandas_datareader._utils import RemoteDataError
 from pymongo import MongoClient
 import dns
 import multiprocessing
+import fix_yahoo_finance as yf
 
 
-START_DATE = "2010-01-01"
+
+yf.pdr_override()
+
+
+START_DATE = "2016-01-01"
 END_DATE = datetime.datetime.today().strftime('%Y-%m-%d')
 
 client = MongoClient('mongodb+srv://admin:Waddsad123@cluster0-i5k0z.gcp.mongodb.net/test?retryWrites=true&w=majority', connect= False)
 db_stocks = client.stocks
+
 
 def func(quotes):
     for index, quote in quotes.iterrows():
@@ -42,10 +48,11 @@ def func(quotes):
                     'date': idx.strftime('%Y-%m-%d')
                 })
         stock['historical_prices'] = historical_prices
-        # print(json.dumps(stock))
+
         result = db_stocks.ticker.insert_one(stock)
         print('One stock: {0}'.format(result.inserted_id))
     return quotes
+
 
 def getStockQuotes():
     quotes = nt.get_nasdaq_symbols()

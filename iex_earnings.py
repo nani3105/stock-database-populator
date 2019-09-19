@@ -25,7 +25,7 @@ class IEXEarnings(IEX):
         return self.symbols[0]
 
     def _get_params(self, symbols):
-        return {'token': 'sk_2eec5a49b4654299b50e3011eb2e9308'}
+        return {'token': 'sk_e1156328f164402ba7fc591c21aaa53d'}
 
     def _read_one_data(self, url, params):
         resp = self._get_response(url, params=params)

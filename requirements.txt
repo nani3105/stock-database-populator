@@ -1,4 +1,5 @@
 pandas_datareader==0.7.0
+fix_yahoo_finance==0.0.21
 pymongo[tls,srv]==3.7.0
 dnspython
 yahoo_earnings_calendar
